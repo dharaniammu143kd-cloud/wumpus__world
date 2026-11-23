@@ -29,3 +29,86 @@ It is assumed that there will always be a safe path that the agent can take to e
 ![image](https://github.com/natsaravanan/19AI405FUNDAMENTALSOFARTIFICIALINTELLIGENCE/assets/87870499/8696111a-a4a7-47cb-ba4b-43a4ef88573f)
 ![image](https://github.com/natsaravanan/19AI405FUNDAMENTALSOFARTIFICIALINTELLIGENCE/assets/87870499/4be5bf06-79fa-4fa0-9334-38a33f06060b)
 
+# program:
+```
+
+wumpus = [
+    ["Save", "Breeze", "PIT", "Breeze"],
+    ["Smell", "Save", "Breeze", "Save"],
+    ["WUMPUS", "GOLD", "PIT", "Breeze"],
+    ["Smell", "Save", "Breeze", "PIT"]
+]
+
+row = 0
+column = 0
+arrow = True
+player = True
+score = 0
+
+while player:
+    print("\nPress u to move up")
+    print("Press d to move down")
+    print("Press l to move left")
+    print("Press r to move right")
+
+    choice = input("Enter your choice: ").lower()
+
+    if choice == "u":
+        if row > 0:
+            row -= 1
+        else:
+            print("Move denied")
+
+    elif choice == "d":
+        if row < 3:
+            row += 1
+        else:
+            print("Move denied")
+
+    elif choice == "l":
+        if column > 0:
+            column -= 1
+        else:
+            print("Move denied")
+
+    elif choice == "r":
+        if column < 3:
+            column += 1
+        else:
+            print("Move denied")
+
+    else:
+        print("Invalid choice")
+        continue
+
+    print("Current location:", wumpus[row][column])
+
+    if wumpus[row][column] == "WUMPUS":
+        score -= 1000
+        print("You encountered the Wumpus!")
+        print("Your score is:", score)
+        break
+
+    elif wumpus[row][column] == "PIT":
+        score -= 1000
+        print("You fell into the pit!")
+        print("Your score is:", score)
+        break
+
+    elif wumpus[row][column] == "GOLD":
+        score += 1000
+        print("GOLD FOUND! You won!")
+        print("Your score is:", score)
+        break
+
+    elif wumpus[row][column] == "Breeze":
+        print("Warning: Breeze detected!")
+
+    elif wumpus[row][column] == "Smell":
+        print("Warning: Stench detected!")
+
+    else:
+        print("The room is safe!")
+```
+# output:
+<img width="417" height="805" alt="image" src="https://github.com/user-attachments/assets/c872dd98-2a4a-47fe-82a4-7672ab25c989" />
